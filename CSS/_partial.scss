@@ -1,0 +1,26 @@
+// _partial.scss
+
+// Variabler: farver, skrifttyper og designparametre
+$color-primary: #541BBE;        // Primær farve
+$color-secondary: #1C0E37;      // Sekundær farve
+$color-white: #FFFFFF;          // Hvid
+$color-light: #ECECEC;          // Lys sekundær
+
+$font-primary: 'Alexandria', sans-serif; // Hovedskrift
+$font-secondary: 'ABeeZee', sans-serif;  // Underordnet skrift
+
+// Mixin: fælles knapstil med variabel bredde
+@mixin btn-style($width: 200px) {
+  width: $width;
+  text-decoration: none;
+  background-color: $color-secondary;
+  color: $color-white;
+  padding: 0.8rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($color-secondary, 10%);
+  }
+}

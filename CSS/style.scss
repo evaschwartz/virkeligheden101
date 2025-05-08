@@ -1,0 +1,1075 @@
+@use 'partial';
+
+/*==========================================
+=            1. Reset & Basisstil          =
+==========================================*/
+
+// Nulstil margin, padding og box-sizing for alle elementer
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Grundlæggende body-stil
+body {
+  margin: 0;
+  background-color: partial.$color-white;
+  color: partial.$color-primary;
+  font-family: partial.$font-primary;
+}
+
+/*==========================================
+=         2. Generelle komponenter         =
+==========================================*/
+
+// Enkel container med indre afstand
+.container {
+  padding: 1rem;
+}
+
+// Fælles knap-stil
+.btn {
+  @include partial.btn-style();
+  display: inline-block;
+  margin: 1rem auto;
+}
+
+/*==========================================
+=         3. Home (forside) view          =
+==========================================*/
+
+.home-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: partial.$color-primary;
+  color: partial.$color-white;
+
+  // Illustrationsbillede
+  .hero-image {
+    width: 300px;
+    margin-bottom: 1.5rem;
+  }
+
+  // Primær overskrift
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  // Undertekst
+  .intro-text {
+    max-width: 80%;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  // Specifik justering af btn her
+  .btn {
+    margin-bottom: 1rem;
+  }
+}
+
+/*==========================================
+=     4. Emne-oversigt (emner) view        =
+==========================================*/
+
+.emne-view {
+  background-color: partial.$color-primary;
+  min-height: 100vh;
+
+  // Header med tilbage- og profil-knapper
+  .emne-header {
+    position: relative;
+    padding: 3rem 1rem;
+    background-color: partial.$color-primary;
+    color: partial.$color-white;
+    text-align: center;
+
+    // Titel
+    h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      line-height: 1.2;
+      padding-top: 2rem;
+    }
+
+    // Undertitel
+    .subtitle {
+      max-width: 80%;
+      margin: 0 auto 0.8rem;
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+
+    // Tilbage-knap
+    .back-btn {
+      position: absolute;
+      top: 1.4rem;
+      left: 1.4rem;
+      cursor: pointer;
+
+      i {
+        font-size: 1.2rem;
+        color: partial.$color-white;
+      }
+    }
+
+    // Profil-knap
+    .profile-btn {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      cursor: pointer;
+
+      i {
+        font-size: 1.2rem;
+        color: partial.$color-white;
+      }
+    }
+  }
+
+  // Grid over emne-kort
+  .emne-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 1rem 2rem;
+  }
+
+  // Hver emne-kort
+  .emne-item {
+    display: flex;
+    align-items: center;
+    background-color: partial.$color-light;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    text-decoration: none;
+    color: #000;
+
+    // Progress-cirkel
+    .progress-container {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      margin-right: 1rem;
+
+      .progress-circle {
+        transform: rotate(-90deg);
+
+        .progress-ring__circle {
+          transition: stroke-dashoffset 0.35s;
+          transform-origin: 50% 50%;
+        }
+      }
+
+      // Procent-tekst
+      .progress-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: partial.$color-primary;
+      }
+    }
+
+    // Emne-titel
+    p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+  }
+}
+
+/*==========================================
+=           5. Profil-side view            =
+==========================================*/
+
+.profile-view {
+  position: relative;
+  background-color: partial.$color-white;
+
+  // Øverste bruger-header
+  .profil-header {
+    position: relative;
+    padding: 3rem 1rem;
+    background-color: partial.$color-primary;
+    color: partial.$color-white;
+    text-align: center;
+
+    // Top-bar: tilbage, navn, coins
+    .top-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+
+      // Tilbage-knap
+      .back-btn {
+        position: absolute;
+        left: 1rem;
+        cursor: pointer;
+
+        i {
+          font-size: 1.2rem;
+          color: partial.$color-white;
+        }
+      }
+
+      // Coins-ikon og antal
+      .coins-container {
+        position: absolute;
+        right: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .coins {
+          font-size: 0.9rem;
+        }
+
+        .coin {
+          width: 24px;
+        }
+      }
+
+      // Brugernavn
+      h2 {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+    }
+
+    // Profilbillede
+    .profile-pic {
+      display: block;
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
+
+  // Kort med samlet fremgang
+  .progress-card {
+    position: relative;
+    z-index: 10;
+    width: 85%;
+    max-width: 400px;
+    margin: -30px auto 0;
+    background-color: partial.$color-secondary;
+    border-radius: 20px;
+    padding: 1.5rem;
+
+    // Korttitel
+    h3 {
+      margin-bottom: 1rem;
+      color: partial.$color-white;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    // Detaljer om niveau og progress-bar
+    .progress-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      // Level-tekst
+      .level-text {
+        color: #ddd;
+        font-size: 0.8rem;
+        line-height: 1.2;
+      }
+
+      // Selve progressbaren
+      .progress-bar-container {
+        background-color: partial.$color-white;
+        border-radius: 10px;
+        width: 60%;
+        height: 15px;
+        overflow: hidden;
+
+        .progress-bar {
+          background-color: partial.$color-primary;
+          height: 100%;
+          width: 40%; // dynamisk fra inline
+        }
+      }
+    }
+
+    // Næste reward-info
+    .reward-row {
+      text-align: center;
+      color: partial.$color-white;
+
+      .reward-label {
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .reward-amount {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+
+        .reward-coin {
+          width: 16px;
+          margin-left: 0.2rem;
+        }
+      }
+
+      .reward-desc {
+        font-size: 0.7rem;
+        color: #ccc;
+      }
+    }
+  }
+}
+
+/*==========================================
+=           6. Badge-kollektion            =
+==========================================*/
+
+.badge-collection {
+  text-align: center;
+  padding-top: 20px;
+  margin: 2rem 1rem;
+
+  // Sektionstitel
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #000;
+  }
+
+  // Grid med badges
+  .badge-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 2rem 1rem;
+    justify-content: center;
+  }
+
+  // Hvert badge-item
+  .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+
+    img {
+      width: 100px;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    // Låst badge
+    &.locked {
+      opacity: 0.4;
+    }
+  }
+}
+
+/*==========================================
+=   7. Profil-side: “Alle emner” sektion    =
+==========================================*/
+
+.profile-emnekategori {
+  background-color: partial.$color-white;
+  padding: 2rem 1rem;
+
+  h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #000;
+  }
+
+  .profile-emne-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .profile-emne-item {
+    display: flex;
+    align-items: center;
+    background-color: partial.$color-light;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #000;
+
+    // Cirkulær progress
+    .profile-emne-circle {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      margin-right: 1rem;
+
+      svg {
+        transform: rotate(-90deg);
+      }
+
+      .profile-circle-ring {
+        transition: stroke-dashoffset 0.35s;
+        transform-origin: 50% 50%;
+      }
+
+      .profile-emne-percent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: partial.$color-primary;
+      }
+    }
+
+    .profile-emne-texts {
+      display: flex;
+      flex-direction: column;
+
+      .profile-emne-title {
+        font-size: 1rem;
+        font-weight: 900;
+      }
+      .profile-emne-sub {
+        font-size: 0.85rem;
+        color: #333;
+      }
+    }
+  }
+}
+
+/*==========================================
+=      8. Emne-detail (individuel side)     =
+==========================================*/
+
+.emne-detail {
+  background-color: partial.$color-primary;
+  color: partial.$color-white;
+  min-height: 100vh;
+
+  // Header med navigation
+  .emne-header {
+    position: relative;
+    text-align: center;
+    padding: 1.5rem 1rem 0.5rem;
+
+    .back-btn, .profile-btn {
+      position: absolute;
+      top: 2rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: partial.$color-white;
+    }
+
+    .back-btn {
+      left: 1.4rem;
+      i { font-size: 1.2rem; }
+      span { margin-left: 0.5rem; font-size: 1rem; }
+    }
+    .profile-btn {
+      right: 1.4rem;
+      i { font-size: 1.2rem; }
+    }
+
+    h2 {
+      margin: 4rem 0 0.5rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+  }
+
+  // Hero-billede
+  .emne-hero {
+    text-align: center;
+    padding: 0.5rem 0;
+    img {
+      width: 230px;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  // Liste af scenarie-kort
+  .scenario-list {
+    padding: 2rem 0;
+    background: none;
+
+    .scenario-item {
+      display: flex;
+      align-items: center;
+      background-color: partial.$color-white;
+      border-radius: 12px;
+      margin: 0.5rem 1rem;
+      padding: 0.8rem 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: #000;
+
+      .scenario-icon { width: 50px; margin-right: 1rem; }
+      img.check   { width: 24px; margin-left: auto; }
+
+      p {
+        flex: 1;
+        margin: 0;
+        padding: 10px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+/*==========================================
+=   9. Scenarie-intro (første skærm)        =
+==========================================*/
+
+.scenario-intro {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: partial.$color-white;
+
+  // Øverste lilla header
+  .scenario-header {
+    position: relative;
+    background-color: partial.$color-primary;
+    color: partial.$color-white;
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+    min-height: 300px;
+
+    .back-btn {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: partial.$color-white;
+
+      i { font-size: 1.2rem; }
+      span { margin-left: 0.5rem; font-size: 0.8rem; }
+    }
+
+    .intro-hero {
+      display: block;
+      margin: 0 auto -60px;
+      width: 230px;
+      max-width: 80%;
+      height: auto;
+    }
+  }
+
+  // Underliggende hvide kort
+  .intro-body {
+    background-color: partial.$color-white;
+    margin-top: -50px;
+    padding: 7rem 1.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+    flex-grow: 1;
+
+    h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.6rem;
+      color: #000;
+      font-family: partial.$font-primary;
+      line-height: 1.2;
+    }
+    .scenario-subtitle {
+      font-size: 0.9rem;
+      color: #000;
+      margin-bottom: 1.5rem;
+    }
+    .intro-text {
+      margin: 0 auto 2rem;
+      max-width: 300px;
+      padding: 60px 0 110px;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #000;
+    }
+    .start-btn {
+      margin: 0 2rem 1.5rem;
+      width: 80%;
+      max-width: 320px;
+      padding: 1rem 0;
+      font-weight: 600;
+      border-radius: 50px;
+      border: none;
+      background-color: partial.$color-primary;
+      color: partial.$color-white;
+      cursor: pointer;
+    }
+    .note {
+      font-size: 0.75rem;
+      color: #000;
+    }
+  }
+}
+
+/*==========================================
+=   10. Quiz-side (scenario-quiz view)      =
+==========================================*/
+
+.scenario-quiz {
+  background-color: partial.$color-primary;
+  color: partial.$color-white;
+  min-height: 100vh;
+
+  // Header
+  .quiz-header {
+    position: relative;
+    padding: 2rem 1rem 1rem;
+    text-align: center;
+
+    .back-btn {
+      position: absolute;
+      top: 1.5rem;
+      left: 1rem;
+      display: flex;
+      align-items: center;
+      color: partial.$color-white;
+      cursor: pointer;
+      i { font-size: 1.2rem; }
+    }
+
+    h2 {
+      margin: 0.5rem 0 0.2rem;
+      font-size: 1.3rem;
+      font-weight: 550;
+      max-width: 350px;
+      padding: 30px 0 40px;
+    }
+  }
+
+  // Hvid boks med video + knapper
+  .quiz-body {
+    background-color: partial.$color-white;
+    color: #000;
+    margin-top: -1rem;
+    padding: 1.5rem 1rem 2rem;
+    min-height: calc(100vh - 7rem);
+
+    .quiz-video {
+      display: block;
+      margin: 0 auto 1rem;
+      width: 70%;
+      max-width: 300px;
+      border-radius: 20px;
+      height: auto;
+    }
+
+    .quiz-choices {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 20px;
+
+      .quiz-btn {
+        width: 80%;
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        border: none;
+        background-color: partial.$color-primary;
+        color: partial.$color-white;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/*==========================================
+=       11. Scenario-choice view           =
+==========================================*/
+
+.scenario-choice {
+  background-color: partial.$color-primary;
+  color: partial.$color-white;
+  min-height: 100vh;
+
+  .scenario-header {
+    position: relative;
+    text-align: center;
+    padding: 2rem 1rem;
+
+    .back-btn {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: partial.$color-white;
+
+      i { font-size: 1.2rem; }
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+  }
+
+  .choice-body {
+    background-color: partial.$color-white;
+    padding: 1.5rem;
+    text-align: center;
+
+    .choice-hero {
+      display: block;
+      margin: 0 auto 2rem;
+      width: 90%;
+      max-width: 320px;
+      height: auto;
+    }
+
+    .choice-choices {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .choice-btn {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        border: none;
+        background-color: partial.$color-primary;
+        color: partial.$color-white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/*==========================================
+=       12. Scenario-advice view           =
+==========================================*/
+
+.scenario-advice {
+  background-color: partial.$color-primary;
+  color: partial.$color-white;
+  min-height: 100vh;
+
+  .scenario-header {
+    position: relative;
+    padding: 2rem 1rem;
+    text-align: center;
+
+    .back-btn {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: partial.$color-white;
+
+      i { font-size: 1.2rem; }
+    }
+
+    h2 {
+      margin: 2.5rem 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .advice-text {
+      margin: 0 1rem 1.5rem;
+      font-size: 1rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+  }
+
+  .advice-body {
+    text-align: center;
+    padding: 1rem;
+
+    .advice-hero {
+      display: block;
+      margin: 30px auto 2rem;
+      width: 90%;
+      max-width: 320px;
+      height: auto;
+    }
+
+    .advice-choices {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-top: 100px;
+
+      .choice-btn {
+        width: 80%;
+        max-width: 320px;
+        margin: 0 auto;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 50px;
+        border: none;
+        background-color: partial.$color-white;
+        color: partial.$color-secondary;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        cursor: pointer;
+
+        &:hover {
+          background-color: lighten(partial.$color-white, 5%);
+        }
+      }
+    }
+  }
+}
+
+/*==========================================
+=       13. Scenario-outcome (valg)        =
+==========================================*/
+
+.scenario-outcome {
+  background-color: partial.$color-primary;
+  color: partial.$color-white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .outcome-header {
+    position: relative;
+    padding: 3rem 1rem 3rem;
+    text-align: center;
+
+    .back-btn {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: partial.$color-white;
+
+      i { font-size: 1.2rem; }
+      span { margin-left: 0.5rem; font-size: 1rem; }
+    }
+
+    .outcome-hero {
+      display: block;
+      margin: 0 auto;
+      width: 200px;
+      max-width: 80%;
+    }
+  }
+
+  .outcome-content {
+    background-color: partial.$color-white;
+    color: #000;
+    margin-top: -2rem;
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    flex: 1;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.3;
+      padding-top: 20px;
+      margin: 0;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 1rem 0;
+      padding-top: 30px;
+    }
+    .outcome-btn {
+      margin: calc(2rem + 50px) auto 0;
+      width: 80%;
+      max-width: 300px;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      border: none;
+      background-color: partial.$color-primary;
+      color: partial.$color-white;
+      cursor: pointer;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+/*==========================================
+=           14. Scenario-end view          =
+==========================================*/
+
+.scenario-end {
+  min-height: 100vh;
+  background-color: partial.$color-primary;
+  color: partial.$color-white;
+  display: flex;
+  flex-direction: column;
+
+  // Øverste lilla sektion
+  .end-header {
+    position: relative;
+    padding: 3rem 2rem;
+    text-align: center;
+
+    .back-btn {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: partial.$color-white;
+
+      i { font-size: 1.2rem; }
+      span { margin-left: 0.5rem; font-size: 0.9rem; }
+    }
+
+    .end-hero {
+      display: block;
+      margin: 0 auto 1.5rem;
+      width: 200px;
+      max-width: 80%;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin: 0.5rem 0 0.75rem;
+      font-weight: 600;
+      line-height: 1.3;
+      padding-bottom: 30px;
+    }
+
+    p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  // Nederste hvide sektion med knapper
+  .end-buttons {
+    background-color: partial.$color-white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    text-align: center;
+
+    .end-btn {
+      margin: 0 auto;
+      width: 80%;
+      max-width: 300px;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+
+      &--scenario {
+        background-color: partial.$color-primary;
+        color: partial.$color-white;
+      }
+      &--profile {
+        background-color: partial.$color-primary;
+        color: partial.$color-white;
+      }
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+/*==========================================
+=            15. 404-view                 =
+==========================================*/
+
+.not-found {
+  text-align: center;
+  padding: 1rem;
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    margin-top: 1rem;
+  }
+}
+
+/*==========================================
+=            16. Media Queries            =
+==========================================*/
+
+@media (min-width: 768px) {
+  .emne-list {
+    grid-template-columns: 1fr 1fr;
+  }
+  .scenario-intro {
+    .start-btn {
+      margin: 2rem auto;       
+    }
+  }
+  .scenario-quiz {
+    .quiz-header h2 {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .quiz-choices {
+      align-items: center;
+    }
+  }
+}

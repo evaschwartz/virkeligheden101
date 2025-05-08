@@ -1,0 +1,946 @@
+@charset "UTF-8";
+/*==========================================
+=            1. Reset & Basisstil          =
+==========================================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #FFFFFF;
+  color: #541BBE;
+  font-family: "Alexandria", sans-serif;
+}
+
+/*==========================================
+=         2. Generelle komponenter         =
+==========================================*/
+.container {
+  padding: 1rem;
+}
+
+.btn {
+  width: 200px;
+  text-decoration: none;
+  background-color: #1C0E37;
+  color: #FFFFFF;
+  padding: 0.8rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin: 1rem auto;
+}
+.btn:hover {
+  background-color: #07040e;
+}
+
+/*==========================================
+=         3. Home (forside) view          =
+==========================================*/
+.home-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: #541BBE;
+  color: #FFFFFF;
+}
+.home-view .hero-image {
+  width: 300px;
+  margin-bottom: 1.5rem;
+}
+.home-view h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.home-view .intro-text {
+  max-width: 80%;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.home-view .btn {
+  margin-bottom: 1rem;
+}
+
+/*==========================================
+=     4. Emne-oversigt (emner) view        =
+==========================================*/
+.emne-view {
+  background-color: #541BBE;
+  min-height: 100vh;
+}
+.emne-view .emne-header {
+  position: relative;
+  padding: 3rem 1rem;
+  background-color: #541BBE;
+  color: #FFFFFF;
+  text-align: center;
+}
+.emne-view .emne-header h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  padding-top: 2rem;
+}
+.emne-view .emne-header .subtitle {
+  max-width: 80%;
+  margin: 0 auto 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+.emne-view .emne-header .back-btn {
+  position: absolute;
+  top: 1.4rem;
+  left: 1.4rem;
+  cursor: pointer;
+}
+.emne-view .emne-header .back-btn i {
+  font-size: 1.2rem;
+  color: #FFFFFF;
+}
+.emne-view .emne-header .profile-btn {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  cursor: pointer;
+}
+.emne-view .emne-header .profile-btn i {
+  font-size: 1.2rem;
+  color: #FFFFFF;
+}
+.emne-view .emne-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem 1rem 2rem;
+}
+.emne-view .emne-item {
+  display: flex;
+  align-items: center;
+  background-color: #ECECEC;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: #000;
+}
+.emne-view .emne-item .progress-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-right: 1rem;
+}
+.emne-view .emne-item .progress-container .progress-circle {
+  transform: rotate(-90deg);
+}
+.emne-view .emne-item .progress-container .progress-circle .progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform-origin: 50% 50%;
+}
+.emne-view .emne-item .progress-container .progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #541BBE;
+}
+.emne-view .emne-item p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+/*==========================================
+=           5. Profil-side view            =
+==========================================*/
+.profile-view {
+  position: relative;
+  background-color: #FFFFFF;
+}
+.profile-view .profil-header {
+  position: relative;
+  padding: 3rem 1rem;
+  background-color: #541BBE;
+  color: #FFFFFF;
+  text-align: center;
+}
+.profile-view .profil-header .top-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.profile-view .profil-header .top-bar .back-btn {
+  position: absolute;
+  left: 1rem;
+  cursor: pointer;
+}
+.profile-view .profil-header .top-bar .back-btn i {
+  font-size: 1.2rem;
+  color: #FFFFFF;
+}
+.profile-view .profil-header .top-bar .coins-container {
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.profile-view .profil-header .top-bar .coins-container .coins {
+  font-size: 0.9rem;
+}
+.profile-view .profil-header .top-bar .coins-container .coin {
+  width: 24px;
+}
+.profile-view .profil-header .top-bar h2 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.profile-view .profil-header .profile-pic {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.profile-view .progress-card {
+  position: relative;
+  z-index: 10;
+  width: 85%;
+  max-width: 400px;
+  margin: -30px auto 0;
+  background-color: #1C0E37;
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+.profile-view .progress-card h3 {
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.profile-view .progress-card .progress-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.profile-view .progress-card .progress-details .level-text {
+  color: #ddd;
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+.profile-view .progress-card .progress-details .progress-bar-container {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 60%;
+  height: 15px;
+  overflow: hidden;
+}
+.profile-view .progress-card .progress-details .progress-bar-container .progress-bar {
+  background-color: #541BBE;
+  height: 100%;
+  width: 40%;
+}
+.profile-view .progress-card .reward-row {
+  text-align: center;
+  color: #FFFFFF;
+}
+.profile-view .progress-card .reward-row .reward-label {
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+.profile-view .progress-card .reward-row .reward-amount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+.profile-view .progress-card .reward-row .reward-amount .reward-coin {
+  width: 16px;
+  margin-left: 0.2rem;
+}
+.profile-view .progress-card .reward-row .reward-desc {
+  font-size: 0.7rem;
+  color: #ccc;
+}
+
+/*==========================================
+=           6. Badge-kollektion            =
+==========================================*/
+.badge-collection {
+  text-align: center;
+  padding-top: 20px;
+  margin: 2rem 1rem;
+}
+.badge-collection h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #000;
+}
+.badge-collection .badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 2rem 1rem;
+  justify-content: center;
+}
+.badge-collection .badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+}
+.badge-collection .badge-item img {
+  width: 100px;
+  margin-bottom: 0.5rem;
+}
+.badge-collection .badge-item p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.badge-collection .badge-item.locked {
+  opacity: 0.4;
+}
+
+/*==========================================
+=   7. Profil-side: “Alle emner” sektion    =
+==========================================*/
+.profile-emnekategori {
+  background-color: #FFFFFF;
+  padding: 2rem 1rem;
+}
+.profile-emnekategori h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+.profile-emnekategori .profile-emne-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.profile-emnekategori .profile-emne-item {
+  display: flex;
+  align-items: center;
+  background-color: #ECECEC;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #000;
+}
+.profile-emnekategori .profile-emne-item .profile-emne-circle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-right: 1rem;
+}
+.profile-emnekategori .profile-emne-item .profile-emne-circle svg {
+  transform: rotate(-90deg);
+}
+.profile-emnekategori .profile-emne-item .profile-emne-circle .profile-circle-ring {
+  transition: stroke-dashoffset 0.35s;
+  transform-origin: 50% 50%;
+}
+.profile-emnekategori .profile-emne-item .profile-emne-circle .profile-emne-percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #541BBE;
+}
+.profile-emnekategori .profile-emne-item .profile-emne-texts {
+  display: flex;
+  flex-direction: column;
+}
+.profile-emnekategori .profile-emne-item .profile-emne-texts .profile-emne-title {
+  font-size: 1rem;
+  font-weight: 900;
+}
+.profile-emnekategori .profile-emne-item .profile-emne-texts .profile-emne-sub {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+/*==========================================
+=      8. Emne-detail (individuel side)     =
+==========================================*/
+.emne-detail {
+  background-color: #541BBE;
+  color: #FFFFFF;
+  min-height: 100vh;
+}
+.emne-detail .emne-header {
+  position: relative;
+  text-align: center;
+  padding: 1.5rem 1rem 0.5rem;
+}
+.emne-detail .emne-header .back-btn, .emne-detail .emne-header .profile-btn {
+  position: absolute;
+  top: 2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+.emne-detail .emne-header .back-btn {
+  left: 1.4rem;
+}
+.emne-detail .emne-header .back-btn i {
+  font-size: 1.2rem;
+}
+.emne-detail .emne-header .back-btn span {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}
+.emne-detail .emne-header .profile-btn {
+  right: 1.4rem;
+}
+.emne-detail .emne-header .profile-btn i {
+  font-size: 1.2rem;
+}
+.emne-detail .emne-header h2 {
+  margin: 4rem 0 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.emne-detail .emne-hero {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+.emne-detail .emne-hero img {
+  width: 230px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.emne-detail .scenario-list {
+  padding: 2rem 0;
+  background: none;
+}
+.emne-detail .scenario-list .scenario-item {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  margin: 0.5rem 1rem;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #000;
+}
+.emne-detail .scenario-list .scenario-item .scenario-icon {
+  width: 50px;
+  margin-right: 1rem;
+}
+.emne-detail .scenario-list .scenario-item img.check {
+  width: 24px;
+  margin-left: auto;
+}
+.emne-detail .scenario-list .scenario-item p {
+  flex: 1;
+  margin: 0;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/*==========================================
+=   9. Scenarie-intro (første skærm)        =
+==========================================*/
+.scenario-intro {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+}
+.scenario-intro .scenario-header {
+  position: relative;
+  background-color: #541BBE;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+  min-height: 300px;
+}
+.scenario-intro .scenario-header .back-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+.scenario-intro .scenario-header .back-btn i {
+  font-size: 1.2rem;
+}
+.scenario-intro .scenario-header .back-btn span {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+}
+.scenario-intro .scenario-header .intro-hero {
+  display: block;
+  margin: 0 auto -60px;
+  width: 230px;
+  max-width: 80%;
+  height: auto;
+}
+.scenario-intro .intro-body {
+  background-color: #FFFFFF;
+  margin-top: -50px;
+  padding: 7rem 1.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+}
+.scenario-intro .intro-body h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  color: #000;
+  font-family: "Alexandria", sans-serif;
+  line-height: 1.2;
+}
+.scenario-intro .intro-body .scenario-subtitle {
+  font-size: 0.9rem;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+.scenario-intro .intro-body .intro-text {
+  margin: 0 auto 2rem;
+  max-width: 300px;
+  padding: 60px 0 110px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #000;
+}
+.scenario-intro .intro-body .start-btn {
+  margin: 0 2rem 1.5rem;
+  width: 80%;
+  max-width: 320px;
+  padding: 1rem 0;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  background-color: #541BBE;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.scenario-intro .intro-body .note {
+  font-size: 0.75rem;
+  color: #000;
+}
+
+/*==========================================
+=   10. Quiz-side (scenario-quiz view)      =
+==========================================*/
+.scenario-quiz {
+  background-color: #541BBE;
+  color: #FFFFFF;
+  min-height: 100vh;
+}
+.scenario-quiz .quiz-header {
+  position: relative;
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+.scenario-quiz .quiz-header .back-btn {
+  position: absolute;
+  top: 1.5rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.scenario-quiz .quiz-header .back-btn i {
+  font-size: 1.2rem;
+}
+.scenario-quiz .quiz-header h2 {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.3rem;
+  font-weight: 550;
+  max-width: 350px;
+  padding: 30px 0 40px;
+}
+.scenario-quiz .quiz-body {
+  background-color: #FFFFFF;
+  color: #000;
+  margin-top: -1rem;
+  padding: 1.5rem 1rem 2rem;
+  min-height: calc(100vh - 7rem);
+}
+.scenario-quiz .quiz-body .quiz-video {
+  display: block;
+  margin: 0 auto 1rem;
+  width: 70%;
+  max-width: 300px;
+  border-radius: 20px;
+  height: auto;
+}
+.scenario-quiz .quiz-body .quiz-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 20px;
+}
+.scenario-quiz .quiz-body .quiz-choices .quiz-btn {
+  width: 80%;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  background-color: #541BBE;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+/*==========================================
+=       11. Scenario-choice view           =
+==========================================*/
+.scenario-choice {
+  background-color: #541BBE;
+  color: #FFFFFF;
+  min-height: 100vh;
+}
+.scenario-choice .scenario-header {
+  position: relative;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.scenario-choice .scenario-header .back-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+.scenario-choice .scenario-header .back-btn i {
+  font-size: 1.2rem;
+}
+.scenario-choice .scenario-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.scenario-choice .scenario-header p {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+.scenario-choice .choice-body {
+  background-color: #FFFFFF;
+  padding: 1.5rem;
+  text-align: center;
+}
+.scenario-choice .choice-body .choice-hero {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 90%;
+  max-width: 320px;
+  height: auto;
+}
+.scenario-choice .choice-body .choice-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.scenario-choice .choice-body .choice-choices .choice-btn {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  background-color: #541BBE;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/*==========================================
+=       12. Scenario-advice view           =
+==========================================*/
+.scenario-advice {
+  background-color: #541BBE;
+  color: #FFFFFF;
+  min-height: 100vh;
+}
+.scenario-advice .scenario-header {
+  position: relative;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.scenario-advice .scenario-header .back-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+.scenario-advice .scenario-header .back-btn i {
+  font-size: 1.2rem;
+}
+.scenario-advice .scenario-header h2 {
+  margin: 2.5rem 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.scenario-advice .scenario-header .advice-text {
+  margin: 0 1rem 1.5rem;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+.scenario-advice .advice-body {
+  text-align: center;
+  padding: 1rem;
+}
+.scenario-advice .advice-body .advice-hero {
+  display: block;
+  margin: 30px auto 2rem;
+  width: 90%;
+  max-width: 320px;
+  height: auto;
+}
+.scenario-advice .advice-body .advice-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 100px;
+}
+.scenario-advice .advice-body .advice-choices .choice-btn {
+  width: 80%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  border: none;
+  background-color: #FFFFFF;
+  color: #1C0E37;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.scenario-advice .advice-body .advice-choices .choice-btn:hover {
+  background-color: white;
+}
+
+/*==========================================
+=       13. Scenario-outcome (valg)        =
+==========================================*/
+.scenario-outcome {
+  background-color: #541BBE;
+  color: #FFFFFF;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.scenario-outcome .outcome-header {
+  position: relative;
+  padding: 3rem 1rem 3rem;
+  text-align: center;
+}
+.scenario-outcome .outcome-header .back-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+.scenario-outcome .outcome-header .back-btn i {
+  font-size: 1.2rem;
+}
+.scenario-outcome .outcome-header .back-btn span {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}
+.scenario-outcome .outcome-header .outcome-hero {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  max-width: 80%;
+}
+.scenario-outcome .outcome-content {
+  background-color: #FFFFFF;
+  color: #000;
+  margin-top: -2rem;
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  flex: 1;
+}
+.scenario-outcome .outcome-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding-top: 20px;
+  margin: 0;
+}
+.scenario-outcome .outcome-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+  padding-top: 30px;
+}
+.scenario-outcome .outcome-content .outcome-btn {
+  margin: calc(2rem + 50px) auto 0;
+  width: 80%;
+  max-width: 300px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  background-color: #541BBE;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.scenario-outcome .outcome-content .outcome-btn:hover {
+  opacity: 0.9;
+}
+
+/*==========================================
+=           14. Scenario-end view          =
+==========================================*/
+.scenario-end {
+  min-height: 100vh;
+  background-color: #541BBE;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+.scenario-end .end-header {
+  position: relative;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.scenario-end .end-header .back-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+.scenario-end .end-header .back-btn i {
+  font-size: 1.2rem;
+}
+.scenario-end .end-header .back-btn span {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+.scenario-end .end-header .end-hero {
+  display: block;
+  margin: 0 auto 1.5rem;
+  width: 200px;
+  max-width: 80%;
+}
+.scenario-end .end-header h2 {
+  font-size: 1.6rem;
+  margin: 0.5rem 0 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding-bottom: 30px;
+}
+.scenario-end .end-header p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.scenario-end .end-buttons {
+  background-color: #FFFFFF;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.scenario-end .end-buttons .end-btn {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 300px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.scenario-end .end-buttons .end-btn--scenario {
+  background-color: #541BBE;
+  color: #FFFFFF;
+}
+.scenario-end .end-buttons .end-btn--profile {
+  background-color: #541BBE;
+  color: #FFFFFF;
+}
+.scenario-end .end-buttons .end-btn:hover {
+  opacity: 0.9;
+}
+
+/*==========================================
+=            15. 404-view                 =
+==========================================*/
+.not-found {
+  text-align: center;
+  padding: 1rem;
+}
+.not-found h1 {
+  font-size: 1.5rem;
+}
+.not-found .btn {
+  margin-top: 1rem;
+}
+
+/*==========================================
+=            16. Media Queries            =
+==========================================*/
+@media (min-width: 768px) {
+  .emne-list {
+    grid-template-columns: 1fr 1fr;
+  }
+  .scenario-intro .start-btn {
+    margin: 2rem auto;
+  }
+  .scenario-quiz .quiz-header h2 {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .scenario-quiz .quiz-choices {
+    align-items: center;
+  }
+}/*# sourceMappingURL=style.css.map */
